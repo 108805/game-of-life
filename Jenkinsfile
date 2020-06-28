@@ -21,9 +21,8 @@ node {
         echo "login into docker hub "
         withCredentials([usernamePassword(credentialsId: '35e8308a-35a4-4d1d-9165-5eff4a52d65d', passwordVariable: 'passwd', usernameVariable: 'username')]) {
          sh 'docker login -u ${username} -p ${passwd} '   
-    
+         sh 'docker push poojadevops/gameoflife:1.0'
       }
-      sh 'docker push poojadevops/gameoflife:1.0'
     }
     
     stage('Deployment in cluster')
