@@ -25,4 +25,14 @@ node {
       }
       sh 'docker push poojadevops/gameoflife:1.0'
     }
+    
+    stage('Deployment in cluster')
+    {
+       // echo "deploying into k8's"
+        withKubeConfig(  credentialsId: 'kubernetes') {
+    // some block
+       sh 'kubectl apply -f Deployment.yml'
+       sh 'kubectl apply -f service.yml'
+        }
+    }
 }
