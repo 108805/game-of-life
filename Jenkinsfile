@@ -29,7 +29,7 @@ node {
     stage('Deployment in cluster')
     {
        // echo "deploying into k8's"
-        withKubeConfig(  credentialsId: 'kubernetes') {
+        withKubeConfig(  credentialsId: 'KUBERNETES_CLUSTER_CONFIG') {
     // some block
        sh 'kubectl apply -f Deployment.yml'
        sh 'kubectl apply -f service.yml'
