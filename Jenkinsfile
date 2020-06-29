@@ -28,9 +28,7 @@ node {
     stage('Deployment in cluster')
     {
        // echo "deploying into k8's"
-        withKubeConfig(  credentialsId: 'kubernetesconfig') {
-        kubernetesDeploy configs: '', kubeConfig: [path: ''], kubeconfigId: 'kubernetesconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-    // some block
+        withKubeConfig(  credentialsId: 'kubernetes') {
        sh 'kubectl apply -f Deployment.yml'
        sh 'kubectl apply -f service.yml'
         }
