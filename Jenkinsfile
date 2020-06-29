@@ -29,7 +29,7 @@ node {
     {
        // echo "deploying into k8's"
         withKubeConfig(  credentialsId: 'kubernetesconfig') {
-        //kubernetesDeploy( configs: 'Deployment.yml', enableConfigSubstitution: false, kubeConfig: [path: 'home/ubuntu/.kube/config'], kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG'){
+        kubernetesDeploy configs: '', kubeConfig: [path: ''], kubeconfigId: 'kubernetesconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
     // some block
        sh 'kubectl apply -f Deployment.yml'
        sh 'kubectl apply -f service.yml'
