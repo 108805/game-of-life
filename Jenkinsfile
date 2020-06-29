@@ -29,7 +29,7 @@ node {
     {
        // echo "deploying into k8's"
         //withKubeConfig(  credentialsId: 'kubernetes') 
-        kubernetesDeploy configs: '/home/ubuntu/.kube/config', enableConfigSubstitution: false, kubeConfig: [path: ''], kubeconfigId: 'Kubernetesconfig'
+        kubernetesDeploy( configs: '/home/ubuntu/.kube/config', enableConfigSubstitution: false, kubeConfig: [path: ''], kubeconfigId: 'Kubernetesconfig')
         {
        sh 'kubectl apply -f Deployment.yml'
        sh 'kubectl apply -f service.yml'
